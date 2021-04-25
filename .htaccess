@@ -1,0 +1,12 @@
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION BEGIN
+PassengerAppRoot "/home/cclijltg/1clicknft.com/meta"
+PassengerBaseURI "/"
+PassengerNodejs "/home/cclijltg/nodevenv/1clicknft.com/meta/10/bin/node"
+PassengerAppType node
+PassengerStartupFile meta/server.js
+PassengerAppLogFile "/home/cclijltg/nftbeta.io/meta"
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION END
+# DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION BEGIN
+<IfModule Litespeed>
+</IfModule>
+# DO NOT REMOVE OR MODIFY. CLOUDLINUX ENV VARS CONFIGURATION END

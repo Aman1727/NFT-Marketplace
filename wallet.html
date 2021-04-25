@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/web3@0.19.0/dist/web3.js"></script>
+    <script type="text/javascript">
+        window.addEventListener('load', function () {
+            if (typeof web3 !== 'undefined') {
+                console.log('Web3 Detected! ' + web3.currentProvider.constructor.name)
+                
+                
+                
+                // Wait for loading completion to avoid race conditions with web3 injection timing.
+              if (window.ethereum) {
+                const web3 = new Web3(window.ethereum);
+                try {
+                  // Request account access if needed
+                  await window.ethereum.enable();
+                  // Acccounts now exposed
+                  return web3;
+                } catch (error) {
+                  console.error(error);
+                }
+              }
+              // Legacy dapp browsers...
+              else if (window.web3) {
+                // Use Mist/MetaMask's provider.
+                const web3 = window.web3;
+                console.log('Injected web3 detected.');
+                return web3;
+              }
+              // Fallback to localhost; use dev console port by default...
+              else {
+                const provider = new Web3.providers.HttpProvider('http://127.0.0.1:9545');
+                const web3 = new Web3(provider);
+                console.log('No web3 instance injected, using Local web3.');
+                return web3;
+              }
+                
+                
+                
+              /*  window.web3 = new Web3(web3.currentProvider);
+
+                var toAddress = '0x8349ACdBd66b35131Da49672E1010793866b85f4'
+                var ethAmount = .1
+
+                web3.eth.sendTransaction({
+                    from: web3.eth.accounts[0],
+                    to: toAddress,
+                    value: web3.toWei(ethAmount, 'ether')
+                }, function (error, result) {
+                    if (error) {
+                        document.getElementById('output').innerHTML = "Something went wrong!"
+                    } else {
+                        document.getElementById('output').innerHTML = "Track the payment: <a href='https://etherscan.io/tx/" + result + "'>https://etherscan.io/tx/" + result + "'"
+                    }
+                });*/
+            } else {
+                document.getElementById('output').innerHtml = 'Please download and install Metamask: <a href="https://metamask.io/">https://metamask.io/</a>'
+            }
+        })
+    </script>
+</head>
+<body>
+    <div id="output"></div>
+</body>
+</html>
